@@ -1,0 +1,32 @@
+{
+    "name": "ant-hill/phalcon-application",
+    "license": "MIT",
+    "type": "project",
+    "description": "Phalcon skeleton application with modules support",
+    "authors": [
+        {
+            "name": "Ivan Pyankov",
+            "email": "unit.1985@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        },
+        "classmap": [
+            "app/AppKernel.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "ant-hill/phalcon-kernel-module": "^0.1.0"
+    },
+    "require-dev":{
+        "phpunit/phpunit": "^4.8"
+    }
+}
