@@ -4,5 +4,7 @@ $loader = require __DIR__ . '/../app/autoload.php';
 $input = new \Symfony\Component\Console\Input\ArgvInput();
 $env = $input->getParameterOption(['--env', '-e'], getenv('PHALCON_ENV') ?: 'dev');
 
-$console = new \Anthill\Phalcon\KernelModule\Cli\Application(new AppKernel($env));
+$kernel = new AppKernel($env);
+$console = new \Anthill\Phalcon\KernelModule\Cli\Application($kernel);
+$console->add(new \Acme\DemoModule\Command\HelloWorld());;
 $console->run($input);

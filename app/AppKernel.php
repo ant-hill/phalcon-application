@@ -1,5 +1,7 @@
 <?php
 
+use Anthill\Phalcon\KernelModule\ConfigLoader\LoaderFactoryInterface;
+
 class AppKernel extends \Anthill\Phalcon\KernelModule\Kernel
 {
 
@@ -21,21 +23,26 @@ class AppKernel extends \Anthill\Phalcon\KernelModule\Kernel
         return __DIR__;
     }
 
+    public function getName()
+    {
+        return 'Phalcon skeleton application';
+    }
+
+    /**
+     * @param LoaderFactoryInterface $loader
+     * @return \Phalcon\Config
+     * @throws \Anthill\Phalcon\KernelModule\ConfigLoader\Exceptions\LoaderException
+     */
+    public function registerConfiguration(LoaderFactoryInterface $loader)
+    {
+        return $loader->load($this->getRootDir() . '/config/config_' . $this->getEnvironment() . '.php');
+    }
+
     /**
      * @return \Phalcon\Mvc\ModuleDefinitionInterface[]
      */
     public function registerModules()
     {
         return array();
-    }
-
-    public function registerConfiguration(\Phalcon\Config\Loader $loader)
-    {
-        return $loader::load(__DIR__ . '/config/config.php');
-    }
-
-    public function getName()
-    {
-        return 'Phalcon skeleton application';
     }
 }

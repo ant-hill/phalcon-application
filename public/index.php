@@ -1,12 +1,13 @@
 <?php
 
-use Anthill\Phalcon\KernelModule\Mvc\Micro as MicroMvc;
-
 $loader = require __DIR__ . '/../app/autoload.php';
 
 $kernel = new AppKernel('dev');
-$app = new MicroMvc($kernel);
+$kernel->boot();
+$kernel->registerRoutes();
+$app = new \Phalcon\Mvc\Application($kernel->getDI());
 /**
  * Handle the request
  */
-$app->handle();
+$response = $app->handle();
+$response->send();

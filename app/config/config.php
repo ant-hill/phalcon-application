@@ -1,7 +1,8 @@
 <?php
 // config variables
 return array(
-    'application'=> array(
-        'route' => __DIR__.'/route.php'
-    )
+    'framework' => array(
+        'routes' =>  include __DIR__ . '/route.php'
+    ),
+    'services' => include __DIR__ . '/services.php',
 );
